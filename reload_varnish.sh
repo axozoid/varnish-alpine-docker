@@ -16,7 +16,7 @@ if varnishadm vcl.list | awk ' { print $3 } ' | grep -q $new_config; then
   exit 2
 fi
 
-current_config=$( varnishadm vcl.list | awk ' /^active/ { print $3 } ' )
+current_config=$( varnishadm vcl.list | awk ' /^active/ { print $4 } ' )
 
 if [[ ! -z $DEBUG ]]; then
   echo "Loading vcl from $VARNISH_CONFIG_FILE"
@@ -39,4 +39,3 @@ else
 fi
 [[ ! -z $DEBUG ]] && varnishadm vcl.list
 exit 0
-
